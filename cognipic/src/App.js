@@ -3,11 +3,15 @@ import './App.css';
 import Connexion from './pages/Connexion/Connexion';
 import PageSignin from './pages/PageSignIn/PageSignIn';
 import Accueil from './pages/Accueil/Accueil';
+import Calendrier from './components/Calendrier/Calendrier';
+import PageCalendrier from './pages/PageCalendrier/PageCalendrier';
+import Evenements from './pages/Evenements/Evenements';
 
 function App() {
   const [page, setPage] = useState('accueil'); // Page par défaut : Accueil
   const [token, setToken] = useState(localStorage.getItem('token')); // Récupération du token
   const [info, setInfo] = useState(null); // Informations de l'utilisateur
+  const [showCalendar, setShowCalendar] = useState(false); // État pour afficher le calendrier
 
   // Simulation de validation du token (mock)
   const mockUser = {
@@ -30,10 +34,11 @@ function App() {
     localStorage.removeItem('token');
     setToken(null);
     setPage('connexion');
+    setShowCalendar(false); // Masquer le calendrier lors de la déconnexion
   };
 
-  // Rendu de la page courante en fonction de l'état 'page'
-  console.log('Page actuelle:', page);  // Ajoute un log ici
+  // Rendu de la page courante
+  console.log('Page actuelle:', page);
 
   let CurrentPage;
   switch (page) {
@@ -45,6 +50,13 @@ function App() {
       console.log('Rendu de PageSignin');
       CurrentPage = <PageSignin setPage={setPage} />;
       break;
+    case "evenements":
+        CurrentPage = <Evenements setPage={setPage}/>;
+      break;
+    case 'calendrier':
+        console.log('Rendu de PageCalendrier');
+        CurrentPage = <PageCalendrier setPage={setPage} />;
+      break;      
     default:
       console.log('Rendu d\'Accueil');
       CurrentPage = <Accueil setPage={setPage} />;
@@ -58,18 +70,24 @@ function App() {
         <nav className="nav">
           <ul>
             <li><button onClick={() => setPage('accueil')}>Accueil</button></li>
-            <li><button onClick={() => setPage('reserver')}>Réserver</button></li>
-            <li><button onClick={handleLogout}>Déconnexion</button></li>
+
             {/* Liens conditionnels */}
-            {info && info.is_admin && (
-              <>
-                <li><button onClick={() => setPage('pageAdmin')}>Admin</button></li>
-                <li><button onClick={() => setPage('espaceUser')}>Espace Personnel</button></li>
-                <li><button onClick={handleLogout}>Déconnexion</button></li>
-              </>
-            )}
+            {info?.is_admin && (
+                <>
+                  <li><button onClick={() => setPage('calendrier')}>Calendrier</button></li>
+                  <li><button onClick={() => setPage('evenements')}>Evenements</button></li>
+                  <li><button onClick={handleLogout}>Déconnexion</button></li>
+                </>
+              )}
             {!info && (
+              <>
               <li><button onClick={() => setPage('connexion')}>Connexion</button></li>
+              <li><button onClick={() => setPage('evenements')}>Evenements</button></li>
+              <li>
+                 
+                </li> 
+                </>
+
             )}
           </ul>
         </nav>
@@ -77,6 +95,7 @@ function App() {
 
       <main>
         {CurrentPage}
+        {showCalendar && <Calendrier />} {/* Afficher le calendrier si showCalendar est true */}
       </main>
 
       <footer>

@@ -1,0 +1,16 @@
+.event-images img {
+    width: 100%;  /* Ajuste à la largeur du conteneur */
+    height: auto; /* Garde les proportions */
+    object-fit: contain; /* S'assure que l'image est entière */
+    max-height: 400px; /* Ajuste si besoin */
+  }
+
+  .event-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Évite que les images soient écrasées */
+    max-width: 100%;
+    overflow: hidden; /* Évite que l’image soit rognée */
+  }
+  

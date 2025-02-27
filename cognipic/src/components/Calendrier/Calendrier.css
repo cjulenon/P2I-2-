@@ -1,0 +1,124 @@
+/* Conteneur principal du calendrier */
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* En-tête du calendrier */
+  .header2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+  
+  .header h2 {
+    font-size: 1.8em;
+    color: #333;
+    text-transform: capitalize;
+  }
+  
+  /* Boutons de navigation */
+  .header button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .header button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  /* Jours de la semaine */
+  .days {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 700px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .days .col {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.1em;
+    text-transform: capitalize;
+  }
+  
+  /* Grille des jours */
+  .body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    width: 90%;
+    max-width: 700px;
+  }
+  
+  /* Chaque case du calendrier */
+  .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px; /* Augmenté pour plus d'espace */
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 1.3em; /* Augmenté pour une meilleure lisibilité */
+    font-weight: bold;
+  }
+  
+  .cell:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+  }
+  
+  /* Numéros des jours */
+  .number {
+    font-size: 1.4em; /* Agrandi pour plus de visibilité */
+    font-weight: bold;
+  }
+  
+  /* Weekend en couleur */
+  .cell:nth-child(7n),
+  .cell:nth-child(7n-1) {
+    color: #d9534f;
+    font-weight: bold;
+  }
+  
+  /* Responsive pour mobile */
+  @media (max-width: 768px) {
+    .header {
+      width: 100%;
+    }
+    
+    .body {
+      width: 100%;
+      grid-template-columns: repeat(7, 1fr);
+    }
+  
+    .cell {
+      height: 60px; /* Ajusté pour mobile */
+      font-size: 1.1em;
+    }
+  
+    .header h2 {
+      font-size: 1.5em;
+    }
+  }
+  

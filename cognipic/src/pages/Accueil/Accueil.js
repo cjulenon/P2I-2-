@@ -12,29 +12,25 @@ function Accueil({ setPage }) {
         <h3>Nos services</h3>
         <div className="feature-item">
           <h4>Le club photo</h4>
-          <p>Réservez facilement vos créneaux horaires.</p>
+          <p>CogniPic est le club photo de l'ENSC qui est là pour
+             faire en sorte que chaque évènement et chaque moment crucial 
+            de l'école est capturé. 
+          </p>
         </div>
         
         <div className="feature-item">
           <h4>Les évènements</h4>
-          <p>Suivez vos progrès avec nos outils de suivi.</p>
+          <p>Ici vous retrouverez les photos de chaque évènements de l'école. WEI, WIS, gala et même WES, TOUT y est. </p>
         </div>
         <div className="feature-item">
           <h4>Le Yearbook</h4>
-          <p>Gérez vos équipes et vos projets facilement.</p>
+          <p> Dans cette section, vous pouvez avoir un aperçu direct du yearbook et de son avancé. D'ailleurs, pensez à réserver un créneau pour prendre votre photo !</p>
         </div>
       </section>
 
-      <section className="cta">
-        <button onClick={() => setPage('reserver')}>Réserver maintenant</button>
-      </section>
+      
 
-      <footer>
-        <p>© 2025 Meittéo - Tous droits réservés.</p>
-        <nav>
-          <a href="/about">À propos</a> | <a href="/contact">Contact</a> | <a href="/terms">Mentions légales</a>
-        </nav>
-      </footer>
+      
     </div>
   );
 }
